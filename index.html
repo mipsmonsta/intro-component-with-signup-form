@@ -35,30 +35,45 @@
         </div>
         <div class="right__form">
           <form action="" class="right__form__form">
-            <input
-              type="text"
-              id="first_name"
-              name="first_name"
-              placeholder="First Name"
-            />
-            <input
-              type="text"
-              id="last_name"
-              name="last_name"
-              placeholder="Last Name"
-            />
-            <input
-              type="email"
-              id="email_addr"
-              name="email_addr"
-              placeholder="Email Address"
-            />
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-            />
+            <div class="composite">
+              <input
+                type="text"
+                id="first_name"
+                name="first_name"
+                placeholder="First Name"
+              />
+              <p class="text__err firstname--err"></p>
+            </div>
+            <div class="composite">
+              <input
+                type="text"
+                id="last_name"
+                name="last_name"
+                placeholder="Last Name"
+              />
+              <p class="text__err lastname--err"></p>
+            </div>
+
+            <div class="composite">
+              <input
+                type="email"
+                id="email_addr"
+                name="email_addr"
+                placeholder="Email Address"
+              />
+              <p class="text__err email--err"></p>
+            </div>
+
+            <div class="composite">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+              />
+              <p class="text__err password--err"></p>
+            </div>
+
             <button type="button" class="right__button">
               Claim your free trial
             </button>
