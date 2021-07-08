@@ -13,45 +13,71 @@ window.onload = function () {
     return re.test(String(email).toLowerCase());
   };
 
+  resetVisibility = function () {
+    secondChild = this.children[1];
+    paraSibling = this.nextElementSibling;
+    // console.log(secondChild, paraSibling);
+    this.classList.remove("error");
+    secondChild.classList.remove("error");
+    paraSibling.innerText = "";
+    secondChild.focus();
+  };
+
   rightBtn = document.querySelector(".right__button");
   rightBtn.onclick = function () {
-    firstNameValue = document.querySelector("#first_name").value;
+    firstName = document.querySelector("#first_name");
     firstNameErr = document.querySelector(".firstname--err");
-    lastNameValue = document.querySelector("#last_name").value;
+    lastName = document.querySelector("#last_name");
     lastNameErr = document.querySelector(".lastname--err");
-    passwordValue = document.querySelector("#password").value;
+    password = document.querySelector("#password");
     passwordErr = document.querySelector(".password--err");
-    emailValue = document.querySelector("#email_addr").value;
+    email = document.querySelector("#email_addr");
     emailErr = document.querySelector(".email--err");
-    if (!isEmail(emailValue)) {
+    if (!isEmail(email.value)) {
       emailErr.innerText = "Looks like this is not an email";
-      emailErr.classList.add("error");
+      ierror = email.parentNode;
+      ierror.onclick = resetVisibility;
+      ierror.classList.add("error");
+      email.classList.add("error");
     } else {
-      emailErr.classList.remove("error");
+      ierror.classList.remove("error");
+      email.classList.remove("error");
       emailErr.innerText = "";
     }
 
-    if (isEmpty(firstNameValue)) {
+    if (isEmpty(firstName.value)) {
       firstNameErr.innerText = "First Name cannot be empty";
-      firstNameErr.classList.add("error");
+      ierror = firstName.parentNode;
+      ierror.onclick = resetVisibility;
+      firstName.classList.add("error");
+      ierror.classList.add("error");
     } else {
-      firstNameErr.classList.remove("error");
+      ierror.classList.remove("error");
+      firstName.classList.remove("error");
       firstNameErr.innerText = "";
     }
 
-    if (isEmpty(lastNameValue)) {
+    if (isEmpty(lastName.value)) {
       lastNameErr.innerText = "Last Name cannot be empty";
-      lastNameErr.classList.add("error");
+      ierror = lastName.parentNode;
+      ierror.onclick = resetVisibility;
+      lastName.classList.add("error");
+      ierror.classList.add("error");
     } else {
-      lastNameErr.classList.remove("error");
+      ierror.classList.remove("error");
+      lastName.classList.remove("error");
       lastNameErr.innerText = "";
     }
 
-    if (isEmpty(passwordValue)) {
+    if (isEmpty(password.value)) {
       passwordErr.innerText = "Password cannot be empty";
-      passwordErr.classList.add("error");
+      ierror = password.parentNode;
+      ierror.onclick = resetVisibility;
+      password.classList.add("error");
+      ierror.classList.add("error");
     } else {
-      passwordErr.classList.remove("error");
+      ierror.classList.remove("error");
+      password.classList.remove("error");
       passwordErr.innerText = "";
     }
   };
