@@ -16,13 +16,13 @@ window.onload = function () {
   };
 
   resetVisibility = function () {
-    secondChild = this.children[1];
+    inputNode = this.children[2];
     paraSibling = this.nextElementSibling;
     // console.log(secondChild, paraSibling);
     this.classList.remove("error");
-    secondChild.classList.remove("error");
+    inputNode.classList.remove("error");
     paraSibling.innerText = "";
-    secondChild.focus();
+    inputNode.focus();
   };
 
   validateActions = function (inputnode, clickFunction, msg, isError) {
@@ -49,6 +49,10 @@ window.onload = function () {
     lastName = document.querySelector("#last_name");
     password = document.querySelector("#password");
     email = document.querySelector("#email_addr");
+
+    if (email.id === "email_addr") {
+      document.querySelector(".email__text").innerText = email.value;
+    }
 
     validateActions(
       email,
