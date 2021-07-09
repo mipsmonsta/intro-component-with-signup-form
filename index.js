@@ -4,6 +4,8 @@ window.onload = function () {
   isEmpty = function (value) {
     if (value == "") {
       return true;
+    } else {
+      return false;
     }
   };
 
@@ -23,62 +25,54 @@ window.onload = function () {
     secondChild.focus();
   };
 
+  validateActions = function (inputnode, clickFunction, msg, isError) {
+    parentNode = inputnode.parentNode;
+    paraSibling = parentNode.nextElementSibling;
+    parentNode.onclick = clickFunction;
+    console.log(inputnode, isError);
+    if (isError === true) {
+      inputnode.classList.add("error");
+      parentNode.classList.add("error");
+      paraSibling.classList.add("error");
+      paraSibling.innerText = msg;
+    } else {
+      inputnode.classList.remove("error");
+      parentNode.classList.remove("error");
+      paraSibling.classList.remove("error");
+      paraSibling.innerText = "";
+    }
+  };
+
   rightBtn = document.querySelector(".right__button");
   rightBtn.onclick = function () {
     firstName = document.querySelector("#first_name");
-    firstNameErr = document.querySelector(".firstname--err");
     lastName = document.querySelector("#last_name");
-    lastNameErr = document.querySelector(".lastname--err");
     password = document.querySelector("#password");
-    passwordErr = document.querySelector(".password--err");
     email = document.querySelector("#email_addr");
-    emailErr = document.querySelector(".email--err");
-    if (!isEmail(email.value)) {
-      emailErr.innerText = "Looks like this is not an email";
-      ierror = email.parentNode;
-      ierror.onclick = resetVisibility;
-      ierror.classList.add("error");
-      email.classList.add("error");
-    } else {
-      ierror.classList.remove("error");
-      email.classList.remove("error");
-      emailErr.innerText = "";
-    }
 
-    if (isEmpty(firstName.value)) {
-      firstNameErr.innerText = "First Name cannot be empty";
-      ierror = firstName.parentNode;
-      ierror.onclick = resetVisibility;
-      firstName.classList.add("error");
-      ierror.classList.add("error");
-    } else {
-      ierror.classList.remove("error");
-      firstName.classList.remove("error");
-      firstNameErr.innerText = "";
-    }
-
-    if (isEmpty(lastName.value)) {
-      lastNameErr.innerText = "Last Name cannot be empty";
-      ierror = lastName.parentNode;
-      ierror.onclick = resetVisibility;
-      lastName.classList.add("error");
-      ierror.classList.add("error");
-    } else {
-      ierror.classList.remove("error");
-      lastName.classList.remove("error");
-      lastNameErr.innerText = "";
-    }
-
-    if (isEmpty(password.value)) {
-      passwordErr.innerText = "Password cannot be empty";
-      ierror = password.parentNode;
-      ierror.onclick = resetVisibility;
-      password.classList.add("error");
-      ierror.classList.add("error");
-    } else {
-      ierror.classList.remove("error");
-      password.classList.remove("error");
-      passwordErr.innerText = "";
-    }
+    validateActions(
+      email,
+      resetVisibility,
+      "Looks like this is not an email",
+      !isEmail(email.value)
+    );
+    validateActions(
+      lastName,
+      resetVisibility,
+      "Last Name cannot be empty",
+      isEmpty(lastName.value)
+    );
+    validateActions(
+      password,
+      resetVisibility,
+      "Password cannot be empty",
+      isEmpty(password.value)
+    );
+    validateActions(
+      firstName,
+      resetVisibility,
+      "First Name cannot be empty",
+      isEmpty(firstName.value)
+    );
   };
 };
