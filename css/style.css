@@ -205,6 +205,16 @@ input.error {
   color: var(--primary_red);
 }
 
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+
 /*Media Query for Responsive Design*/
 
 @media screen and (max-width: 800px) {
@@ -252,10 +262,4 @@ input.error {
   text-align: center;
 }
 
-.attribution {
-  font-size: 11px;
-  text-align: center;
-}
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
+  
